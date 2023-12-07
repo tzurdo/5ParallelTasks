@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
@@ -15,6 +15,7 @@ namespace _5ParallelTasks
             for (int i = 0; i < 100; i++)
             {
                 int index = i;
+
                 Action a = () => Console.WriteLine($"Task with index: {index}");
                 actions.Enqueue(a);
             }
