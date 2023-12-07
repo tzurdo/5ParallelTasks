@@ -8,14 +8,13 @@ namespace _5ParallelTasks
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Finish.");
+            Console.WriteLine("Start");
 
             ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
             for (int i = 0; i < 100; i++)
             {
                 int index = i;
-
                 Action a = () => Console.WriteLine($"Task with index: {index}");
                 actions.Enqueue(a);
             }
@@ -23,7 +22,7 @@ namespace _5ParallelTasks
             TaskRunner taskRunner = new TaskRunner(actions, 5);
             await taskRunner.RunAsync();
 
-            Console.WriteLine("Finish.");
+            Console.WriteLine("Finish");
         }
     }
 }
