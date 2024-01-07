@@ -6,10 +6,14 @@ namespace _5ParallelTasks
 {
     internal class Program
     {
+        static int MAX_PARALLEL_TASKS = 5;  
+
         static async Task Main(string[] args)
         {
             Console.WriteLine("Start");
 
+            // The following section shall create 100 "jobs".
+            // The jobs will be handled by 5 tasks that shall run in parallel.
             ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
             for (int i = 0; i < 100; i++)
@@ -20,7 +24,7 @@ namespace _5ParallelTasks
                 actions.Enqueue(a);
             }
 
-            TaskRunner taskRunner = new TaskRunner(actions, 5);
+            TaskRunner taskRunner = new TaskRunner(actions, MAX_PARALLEL_TASKS);
             await taskRunner.RunAsync();
 
             Console.WriteLine("Finish");

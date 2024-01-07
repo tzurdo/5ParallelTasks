@@ -10,7 +10,7 @@ internal class TaskRunner
     public TaskRunner(ConcurrentQueue<Action> actions, int maxCount)
     {
         _actions = actions;
-        _semaphoreSlim = new SemaphoreSlim(maxCount, maxCount);
+        _semaphoreSlim = new SemaphoreSlim(1, maxCount);
     }
 
     public async Task RunAsync()
