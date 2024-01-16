@@ -6,8 +6,6 @@ namespace _5ParallelTasks
 {
     internal class Program
     {
-        private const int MaxCount = 5;
-
         static async Task Main(string[] args)
         {
             Console.WriteLine("Start");
@@ -29,7 +27,7 @@ namespace _5ParallelTasks
                 actions.Enqueue(a);
             }
 
-            TaskRunner taskRunner = new TaskRunner(actions, MaxCount);
+            TaskRunner taskRunner = new TaskRunner(actions, 5);
             await taskRunner.RunAsync();
         }
     }
