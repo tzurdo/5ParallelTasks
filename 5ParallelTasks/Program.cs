@@ -10,6 +10,13 @@ namespace _5ParallelTasks
         {
             Console.WriteLine("Start");
 
+            await RunTasks();
+
+            Console.WriteLine("Finish");
+        }
+
+        private static async Task RunTasks()
+        {
             ConcurrentQueue<Action> actions = new ConcurrentQueue<Action>();
 
             for (int i = 0; i < 100; i++)
@@ -22,8 +29,6 @@ namespace _5ParallelTasks
 
             TaskRunner taskRunner = new TaskRunner(actions, 5);
             await taskRunner.RunAsync();
-
-            Console.WriteLine("Finish");
         }
     }
 }
